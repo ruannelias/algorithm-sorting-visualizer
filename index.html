@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ordenação</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Visualização de Ordenação</h1>
+        <div class="controls">
+            <button onclick="startSorting(); displayExplanation('start')">Iniciar</button>
+            <button onclick="bubbleSort(); displayExplanation('bubbleSort')">Bubble Sort</button>
+            <button onclick="selectionSort(); displayExplanation('selectionSort')">Selection Sort</button>
+            <button onclick="insertionSort(); displayExplanation('insertionSort')">Insertion Sort</button>
+            <button onclick="shellSortVisual(); displayExplanation('shellSort')">Shell Sort</button>
+            <button onclick="quickSortVisual(); displayExplanation('quickSort')">Quick Sort</button>
+        </div>
+        <div class="explanation" id="explanation-container">
+            <div class="explanation-content"></div>
+        </div>
+        <div class="bars" id="bars-container"></div>
+    </div>
+    <script src="script.js" defer></script>
+
+</body>
+
+</html>
