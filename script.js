@@ -16,7 +16,7 @@ function generateRandomBars(numBars) {
 let bars = [];
 
 function startSorting() {
-    const numBars = 35;
+    const numBars = 50;
     bars = generateRandomBars(numBars).slice(); // Usando slice() para criar uma cópia do array
 }
 
@@ -31,32 +31,21 @@ function sleep(ms) {
 }
 
 function displayExplanation(algorithm) {
+    const explanations = {
+        bubbleSort: 'Bubble Sort compara pares de elementos adjacentes e os troca se estiverem na ordem errada, movendo o maior elemento gradualmente para o final da lista. Esse processo é repetido para todos os elementos, garantindo que o maior elemento esteja na posição correta ao final de cada passagem. Eficiência no pior caso: O(n^2). Eficiência no melhor caso: O(n). Estabilidade: Estável.',
+        insertionSort: 'Insertion Sort constrói uma lista ordenada um elemento por vez, retirando elementos da lista e os inserindo na posição correta na nova lista. Ele compara cada elemento com os elementos na lista ordenada e insere o elemento na posição adequada, expandindo gradualmente a parte ordenada. Eficiência no pior caso: O(n^2). Eficiência no melhor caso: O(n). Stabilidade: Estável.',
+        selectionSort: 'Selection Sort divide a lista em duas partes: uma parte ordenada e outra parte não ordenada. Ele encontra o menor elemento da parte não ordenada e o coloca no início da parte ordenada. Esse processo é repetido, expandindo a parte ordenada até que toda a lista esteja ordenada. Eficiência no pior caso: O(n^2). Eficiência no melhor caso: O(n^2). Stabilidade: Não estável.',
+        shellSort: 'Shell Sort é uma melhoria do Insertion Sort que compara elementos distantes uns dos outros e os troca se estiverem na ordem errada, gradualmente reduzindo a distância entre os elementos a serem comparados. Isso permite que elementos menores se movam para posições corretas mais rapidamente, otimizando o processo de ordenação. Eficiência no pior caso: O(n log^2 n). Eficiência no melhor caso: O(n log n). Stabilidade: Não estável.',
+        quickSort: 'Quick Sort escolhe um elemento como pivô e divide a lista em duas sub-listas: elementos menores que o pivô e elementos maiores que o pivô. Em seguida, ele ordena recursivamente as sub-listas. O processo de divisão e ordenação recursiva é repetido até que toda a lista esteja ordenada. O Quick Sort é eficiente para grandes conjuntos de dados devido à sua abordagem recursiva e à rápida reorganização dos elementos. Eficiência no pior caso: O(n^2) (ocorre quando o pivô é sempre o menor ou o maior elemento da lista, levando a partições desequilibradas). Eficiência no melhor caso: O(n log n). Stabilidade: Não estável.',
+        start: 'Clique em um algoritmo de ordenação para ver a explicação correspondente.',
+        default: 'Selecione um algoritmo de ordenação para ver a explicação.'
+    };
+
     const explanationContainer = document.querySelector('.explanation-content');
     const explanation = document.querySelector('.explanation');
 
-    switch (algorithm) {
-        case 'bubbleSort':
-            explanationContainer.textContent = 'Bubble Sort compara pares de elementos adjacentes e os troca se estiverem na ordem errada, movendo o maior elemento gradualmente para o final da lista. Esse processo é repetido para todos os elementos, garantindo que o maior elemento esteja na posição correta ao final de cada passagem. Eficiência no pior caso: O(n^2). Eficiência no melhor caso: O(n). Estabilidade: Estável.';
-            break;
-        case 'insertionSort':
-            explanationContainer.textContent = 'Insertion Sort constrói uma lista ordenada um elemento por vez, retirando elementos da lista e os inserindo na posição correta na nova lista. Ele compara cada elemento com os elementos na lista ordenada e insere o elemento na posição adequada, expandindo gradualmente a parte ordenada. Eficiência no pior caso: O(n^2). Eficiência no melhor caso: O(n). Estabilidade: Estável.';
-            break;
-        case 'selectionSort':
-            explanationContainer.textContent = 'Selection Sort divide a lista em duas partes: uma parte ordenada e outra parte não ordenada. Ele encontra o menor elemento da parte não ordenada e o coloca no início da parte ordenada. Esse processo é repetido, expandindo a parte ordenada até que toda a lista esteja ordenada. Eficiência no pior caso: O(n^2). Eficiência no melhor caso: O(n^2). Estabilidade: Não estável.';
-            break;
-        case 'shellSort':
-            explanationContainer.textContent = 'Shell Sort é uma melhoria do Insertion Sort que compara elementos distantes uns dos outros e os troca se estiverem na ordem errada, gradualmente reduzindo a distância entre os elementos a serem comparados. Isso permite que elementos menores se movam para posições corretas mais rapidamente, otimizando o processo de ordenação. Eficiência no pior caso: O(n log^2 n). Eficiência no melhor caso: O(n log n). Estabilidade: Não estável.';
-            break;
-        case 'quickSort':
-            explanationContainer.textContent = 'Quick Sort escolhe um elemento como pivô e divide a lista em duas sub-listas: elementos menores que o pivô e elementos maiores que o pivô. Em seguida, ele ordena recursivamente as sub-listas. O processo de divisão e ordenação recursiva é repetido até que toda a lista esteja ordenada. O Quick Sort é eficiente para grandes conjuntos de dados devido à sua abordagem recursiva e à rápida reorganização dos elementos. Eficiência no pior caso: O(n^2) (ocorre quando o pivô é sempre o menor ou o maior elemento da lista, levando a partições desequilibradas). Eficiência no melhor caso: O(n log n). Estabilidade: Não estável.';
-            break;
-        case 'start':
-            explanationContainer.textContent = 'Clique em um algoritmo de ordenação para ver a explicação correspondente.';
-            break;
-        default:
-            explanationContainer.textContent = 'Selecione um algoritmo de ordenação para ver a explicação.';
-    }
-
+    const explanationText = explanations[algorithm] || explanations.default;
+    explanationContainer.textContent = explanationText;
     explanation.classList.add('active');
 }
 
